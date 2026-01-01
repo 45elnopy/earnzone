@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EarnZone</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+<h2>👀 شاهد الفيديو</h2>
+<video width="300" controls>
+  <source src="video.mp4" type="video/mp4">
+</video>
+<button onclick="reward()">استلام النقاط</button>
+
+<script>
+const tg = Telegram.WebApp;
+const user = tg.initDataUnsafe.user;
+
+function reward(){
+fetch("https://YOUR_BACKEND_URL/add_points", {
+method: "POST",
+headers: {"Content-Type":"application/json"},
+body: JSON.stringify({user_id:user.id, points:10})
+});
+alert("تم إضافة 10 نقاط");
+}
+</script>
+</body>
+</html>
